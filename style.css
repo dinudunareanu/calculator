@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comfortaa', cursive;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    height: 700px;
+    width: 500px;
+    background-color: rgb(63, 63, 63);
+    border: 5px solid rgb(117, 117, 255);
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.display {
+    height: 100px;
+    width: 400px;
+    background-color: rgb(158, 149, 149);
+    border: 5px solid rgb(182, 182, 182);
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 50px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 30px;
+}
+
+button {
+    padding: 40px;
+    font-size: 20px;
+    background-color: cadetblue;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px;
+}
+
+button:hover {
+    transition: 0.15s ease-in-out;
+    background-color: rgb(57, 99, 100);
+}
