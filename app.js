@@ -31,14 +31,12 @@ function operate(a, b, operator) {
 }
 
 let num1 = null;
-let num2 = null;
 let operator = "";
 
 document.querySelector("#clear").addEventListener("click", () => {
     result.textContent = 0;
     operation.textContent = "";
     num1 = null;
-    num2 = null;
     operator = "";
 });
 
@@ -79,7 +77,7 @@ operators.forEach((x) => {
             default:
                 break;
         }
-        result.textContent = "0";
+        result.textContent = 0;
     });
 });
 
@@ -90,7 +88,55 @@ document.querySelector("#equals").addEventListener("click", () => {
     result.textContent = num1;
     operation.textContent = "";
     num1 = null;
-    num2 = null;
     operator = "";
 });
+
+//keyboard
+window.addEventListener("keydown", (e) => {
+    let key = e.key;
+    console.log(key);
+    if (0 <= key && key <= 9) {
+        result.textContent = +result.textContent * 10 + +key;
+    } else if (key === "+" || key === "-" || key === "*" || key === "/") {
+        if (operator !== "") {
+            num1 = operate(num1, +result.textContent, operator);
+        }
+        else {
+            num1 = +result.textContent;
+        }
+        operation.textContent = `${num1} ${key}`;
+        switch (key) {
+            case "+":
+                operator = "plus";
+                break;
+            case "-":
+                operator = "subtract";
+                break;
+            case "*":
+                operator = "multiply";
+                break;
+            case "/":
+                operator = "divide";
+                break;
+            default:
+                break;
+        }
+        result.textContent = 0;
+    } else if (key === "Enter") {
+        if (result.textContent !== "" ) {
+            num1 = operate(num1, +result.textContent, operator);
+        }
+        result.textContent = num1;
+        operation.textContent = "";
+        num1 = null;
+        operator = "";
+    } else if (key === "c" || key === "C") {
+        result.textContent = 0;
+        operation.textContent = "";
+        num1 = null;
+        operator = "";
+    } else if (key === "Backspace") {
+        result.textContent = Math.floor(result.textContent / 10);
+    }
+})
 
